@@ -1,15 +1,32 @@
 const express = require('express');
 const {conectDB} =  require('./db');
-const User = require('./models/users');
+const {Ticket} = require('./models/tickets'); // iportando modelo
 
+// settings 
 conectDB();
 const app = express();
+app.use(express.json());
 const port = process.env.PORT || 3000;
 
-
+// routes
 app.get('/api/tickets', async (req,res)=>{
-  const users = await  User.find();
-  res.json(users);
+  const tickets = await  Ticket.find();
+  res.json(tickets);
+})
+
+// end-point para agregar tickets
+app.post('/api/tickets',(req,res)=>{
+  console.log(req.body);
+   const ticket = new  Ticket(req.body);
+  ticket.save((err)=>{
+    if (err){
+      res.status(400).send('formato Incorrecto')
+    }else{
+      console.log('guardando...')
+      res.json(req.body);
+    }
+    
+  })
 })
 
 

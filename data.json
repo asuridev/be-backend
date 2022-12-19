@@ -1,0 +1,27 @@
+{
+  "id":"1A",
+  "rt": false,
+  "status":"no-paid", 
+  "date": "2022-12-19",
+  "passengers":[{
+    "type":"adult",
+    "id":72342406,
+    "name":"Antonio Jose",
+    "lastname":"Suarez",
+    "email":"antoniosuarezrincon@gmaiil.com",
+    "telephone":3126628769,
+    "age":37
+  }],
+  "flights":[
+    {
+      "startCity":"Barranquilla",
+      "endCity":"Bogota",
+      "miles":100,
+      "plane":"av4546",
+      "startHour":"16:45:00",
+      "endHour":"18:40:00",
+      "price":32000,
+      "direct":true 
+    }
+  ]
+  }
