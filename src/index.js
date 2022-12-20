@@ -7,6 +7,7 @@ conectDB();
 const app = express();
 app.use(express.json());
 const port = process.env.PORT || 3000;
+process.env.TZ = "UTC-5"
 
 // routes
 app.get("/api/tickets", async (req, res) => {
