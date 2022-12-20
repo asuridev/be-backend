@@ -17,8 +17,8 @@ app.get("/api/tickets", async (req, res) => {
 // end-point para agregar tickets
 app.post("/api/tickets", (req, res) => {
   const data = req.body;
-  //data.date = new Date( (new Date().getTime()) - (new Date().getTimezoneOffset())*60000);
-  data.date = new Date();
+  data.date = new Date( (new Date().getTime()) - (new Date().getTimezoneOffset())*60000);
+  //data.date = new Date();
   const ticket = new Ticket(data);
   ticket.save((err) => {
     if (err) {
