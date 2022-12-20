@@ -1,8 +1,8 @@
 const express = require("express");
 const { conectDB } = require("./db");
-const { Ticket } = require("./models/tickets"); // iportando modelo
-const {Fly} = require("./models/flights"); // iportando modelo
-const {User} = require("./models/users"); // iportando modelo
+const { Ticket } = require("./models/tickets"); // importando modelo
+const {Fly} = require("./models/flights"); // importando modelo
+const {User} = require("./models/users"); // importando modelo
 const {v4:uuidv4} =  require('uuid');
 
 // settings
