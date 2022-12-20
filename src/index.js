@@ -1,43 +1,36 @@
-const express = require('express');
-const {conectDB} =  require('./db');
-const {Ticket} = require('./models/tickets'); // iportando modelo
+const express = require("express");
+const { conectDB } = require("./db");
+const { Ticket } = require("./models/tickets"); // iportando modelo
 
-// settings 
+// settings
 conectDB();
 const app = express();
 app.use(express.json());
 const port = process.env.PORT || 3000;
 
 // routes
-app.get('/api/tickets', async (req,res)=>{
-  const tickets = await  Ticket.find();
+app.get("/api/tickets", async (req, res) => {
+  const tickets = await Ticket.find();
   res.json(tickets);
-})
+});
 
 // end-point para agregar tickets
-app.post('/api/tickets',(req,res)=>{
-  console.log(req.body);
-   const ticket = new  Ticket(req.body);
-  ticket.save((err)=>{
-    if (err){
-      res.status(400).send('formato Incorrecto')
-    }else{
-      console.log('guardando...')
+app.post("/api/tickets", (req, res) => {
+  const data = req.body;
+  data.date = new Date( (new Date().getTime()) - (new Date().getTimezoneOffset())*60000);
+  const ticket = new Ticket(data);
+  ticket.save((err) => {
+    if (err) {
+      res.status(400).send("formato Incorrecto");
+    } else {
+      console.log("guardando...");
       res.json(req.body);
     }
-    
-  })
-})
+  });
+});
 
+app.use(express.static("public"));
 
-
-
-
-
-
-
-app.use(express.static('public'));
-
-app.listen(port,()=>{
+app.listen(port, () => {
   console.log("escuchando el puerto...");
 });

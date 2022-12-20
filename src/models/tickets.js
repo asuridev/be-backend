@@ -1,38 +1,27 @@
-const mongoose =  require('mongoose');
+const mongoose = require("mongoose");
 
-const schema = new  mongoose.Schema({
-  id: String,
+const schema = new mongoose.Schema({
+  ticketId: String, //C
   rt: Boolean,
-  status:String, // paid peinding no-paid
-  date:  { type: Date, default: Date.now },
-  passengers:[{
-    size:String, // adult, kid, baby
-    id:Number,
-    name:String,
-    lastname:String,
-    email:String,
-    telephone:Number,
-    age:Number,
-    percentage:Number,
-    total:Number,
-  }],
-  flights:[
+  status: String, //C  paid peinding no-paid
+  date: Date, //C
+  passengers: [
     {
-      startCity:String,
-      endCity:String,
-      miles:Number,
-      plane:String,
-      startDate:Date,
-      endDate:Date,
-      price:Number,
-      direct:Boolean 
-    }
-  ]
-
+      size: String, // adult, kid, baby
+      id: Number,
+      name: String,
+      lastname: String,
+      email: String,
+      telephone: Number,
+      age: Number,
+      percentage: Number, //C
+      total: Number, //C
+    },
+  ],
 });
 
-const Ticket = mongoose.model("Ticket",schema);
+const Ticket = mongoose.model("Ticket", schema);
 
-module.exports ={
-  Ticket
-}
+module.exports = {
+  Ticket,
+};
